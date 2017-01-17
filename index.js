@@ -13,10 +13,9 @@ const getMoreData = http => token => {
     $scope.user.tokenFB=token;
     // ?
     // $scope.user=true;
-    console.log($scope.user);
   });
 }
-const getMoreDataWithHttp($http)
+const getMoreDataWithHttp = getMoreData($http)
 
 $scope.FBLogin = function () {
   firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -25,13 +24,13 @@ $scope.FBLogin = function () {
 
     getMoreDataWithHttp(token)
 
-    if($scope.authenticate()){
-      console.log("Logged in with Facebook! :)")
-    } else {
+    while(!$scope.authenticate()) {
+      $scope.Authenticate();
       $scope.checkingUser=false;
       $scope.Register();
-      $scope.Authenticate();
-    };
+    }
+
+    console.log("Logged in with Facebook! :)")
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;

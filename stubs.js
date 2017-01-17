@@ -1,4 +1,9 @@
-const hi = "asd"
+const randomFail = name => {
+  const result = ~~(Math.random()*2) ? true : false
+  console.log('===>', name, result)
+  return result
+}
+
 module.exports = {
   firebase: {
     auth: () => ({
@@ -37,10 +42,10 @@ module.exports = {
   },
   $scope: {
     FBLogin: function() {},
-    user: {  }
-  },
-  authenticate: () => false,
-  Register: () => false,
-  Authenticate: () => false,
+    user: {  },
+    authenticate: () => randomFail('authenticate'),
+    Register: () => randomFail('Register'),
+    Authenticate: () => randomFail('Authenticate'),
+  }
 }
 
