@@ -27,13 +27,14 @@ $scope.FBLogin = function () {
 
     // getMoreDataWithHttp(token)
 
-    while(!$scope.authenticate()) {
+    $scope.authenticate().then(r => {
+      console.log("Logged in with Facebook! :)")
+    }).catch(e => {
       $scope.Authenticate();
       $scope.checkingUser=false;
       $scope.Register();
-    }
+    })
 
-    console.log("Logged in with Facebook! :)")
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;

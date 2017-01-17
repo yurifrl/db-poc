@@ -43,7 +43,9 @@ module.exports = {
   $scope: {
     FBLogin: function() {},
     user: {  },
-    authenticate: () => randomFail('authenticate'),
+    authenticate: () => newPromise((resolve, reject) => {
+      randomFail('authenticate') ? resolve(true) : reject(false)
+    }),
     Register: () => randomFail('Register'),
     Authenticate: () => randomFail('Authenticate'),
   }
