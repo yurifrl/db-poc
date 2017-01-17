@@ -22,7 +22,10 @@ $scope.FBLogin = function () {
     var token = result.credential.accessToken;
     var user = result.user;
 
-    getMoreDataWithHttp(token)
+    $scope.token = token
+    $scope.user = user
+
+    // getMoreDataWithHttp(token)
 
     while(!$scope.authenticate()) {
       $scope.Authenticate();
