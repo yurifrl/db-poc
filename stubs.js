@@ -3,6 +3,50 @@ const randomFail = name => {
   console.log('===>', name, result)
   return result
 }
+const $http = {
+  get: url => ({
+    success: fn => fn({
+      first_name: "asdas",
+      last_name: "asdasdasd",
+      email: "asdasd@asdasd.com",
+    })
+  }),
+  get: url => ({
+    success: fn => fn({
+      first_name: "asdas",
+      last_name: "asdasdasd",
+      email: "asdasd@asdasd.com",
+    }),
+    fail: fn => fn({
+
+    })
+  })
+}
+
+const ax = {
+  ready: () => false,
+  goal: () => false,
+  identify: () => false,
+  ready: () => false,
+}
+
+const window = {
+  location: null
+}
+
+const $localStorage = { usuario: {} }
+
+const enderecoServidor = {
+  url: "asdasd"
+}
+
+const $ionicPopup = {
+  alert: console.log
+}
+
+const UsuarioService = {
+  setUsuario: usuario => false
+}
 
 module.exports = {
   firebase: {
@@ -12,7 +56,11 @@ module.exports = {
           credential: {
             accessToken: "asdas"
           },
-          user: {}
+          user: {
+            email: "asdasd",
+            tokenFB: "asdasd",
+            senha: "asdasd"
+          }
         }
 
         const err = {
@@ -31,21 +79,22 @@ module.exports = {
       })
     })
   },
-  $http: {
-    get: url => ({
-      success: fn => fn({
-        first_name: "asdas",
-        last_name: "asdasdasd",
-        email: "asdasd@asdasd.com",
-      })
-    })
-  },
+  $http: $http,
   $scope: {
+    hide: () => false,
+    show: () => false,
     FBLogin: function() {},
     user: {  },
-    authenticate: () => randomFail('authenticate'),
     Register: () => randomFail('Register'),
     Authenticate: () => randomFail('Authenticate'),
-  }
+  },
+  ax: ax,
+  $ionicPopup: $ionicPopup,
+  enderecoServidor: enderecoServidor,
+  UsuarioService: UsuarioService,
+  window: window,
+  randomFail: randomFail,
+  $localStorage: $localStorage
 }
+
 
